@@ -1,4 +1,15 @@
-DEBUG:root:pdf2img(pdf_path:./RRTest/ex/AAES/AAES - Top 10 Assets by Vurlnerabilities.PNG, image_path:./, page:1)
-DEBUG:root:pdf2img(pdf_path:./RRTest/ex/AAES/AAES - Top 10 Assets by Vurlnerabilities.PNG, image_path:./, page:1)
-INFO:root:pdf2img: Page 0 loaded
-DEBUG:root:pdf2img: Temp PNG saved: .//badf3d80-305f-4854-9b8a-07ee2d9966af.png
+DEBUG:root:Scanner: on
+DEBUG:root:Load document, path: ./report/pdf.pdf
+DEBUG:root:SCAN: Document path: ./report/pdf.pdf
+DEBUG:root:Loading scan template: AssestByVulnerabilities
+INFO:root:Scan template: {'page': 1, 'crop': (108, 252, 1677, 621)}
+DEBUG:root:Getting page 1, pdf=None
+DEBUG:root:PDF not provided, using last scanned document
+INFO:root:Scanner:page: Page 1 loaded
+DEBUG:root:Converting page to pixels, page=None, matrix=None
+DEBUG:root:Page not provided, using last selected page
+DEBUG:root:Matrix not provided, using default values
+DEBUG:root:Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+DEBUG:root:PixMap not provided, generating from last used page
+INFO:root:Image not provided, using last working image
+DEBUG:root:Scanner:image_path: Output image path does not exist, creating folder ./scan
