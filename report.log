@@ -1,0 +1,4 @@
+DEBUG:root:pdf2img(pdf_path:./RRTest/ex/AAES/AAES - Top 10 Assets by Vurlnerabilities.PNG, image_path:./, page:1)
+DEBUG:root:pdf2img(pdf_path:./RRTest/ex/AAES/AAES - Top 10 Assets by Vurlnerabilities.PNG, image_path:./, page:1)
+INFO:root:pdf2img: Page 0 loaded
+DEBUG:root:pdf2img: Temp PNG saved: .//badf3d80-305f-4854-9b8a-07ee2d9966af.png
