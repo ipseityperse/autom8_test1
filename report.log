@@ -1,0 +1,445 @@
+2021-08-18 18:32:53,335 | discover | walk | 64 | DEBUG | Walking: ./test3, ['AAES - TOP25 Remediation with Details.pdf']
+2021-08-18 18:32:53,336 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AAES - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AAES'}
+2021-08-18 18:32:53,336 | discover | walk | 76 | DEBUG | Accept filename region: AAES
+2021-08-18 18:32:53,336 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AAES - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AAES', 'root': './test3', 'path': './test3\\AAES - TOP25 Remediation with Details.pdf'}
+2021-08-18 18:32:53,340 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:32:53,341 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test3\AAES - TOP25 Remediation with Details.pdf
+2021-08-18 18:32:53,341 | scanner | scan | 60 | DEBUG | Document path: ./test3\AAES - TOP25 Remediation with Details.pdf
+2021-08-18 18:32:53,343 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top25
+2021-08-18 18:32:53,344 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (108, 252, 1677, 621)}
+2021-08-18 18:32:53,344 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:32:53,344 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:32:53,345 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:32:53,345 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:32:53,345 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:32:53,345 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:32:53,345 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:32:53,388 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:32:53,408 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:49,981 | discover | walk | 64 | DEBUG | Walking: ./test2, ['AAES - Top 10 Assets by Vurlnerabilities - External.pdf', 'AAES - Top 10 Assets by Vurlnerabilities.pdf', 'AAES - TOP25 Remediation with Details.pdf', 'AAGC - Top 10 Assets by Vurlnerabilities.pdf', 'AAGC - TOP25 Remediation with Details.pdf', 'AAGS - Top 10 Assets by Vurlnerabilities - External.pdf', 'AAGS - Top 10 Assets by Vurlnerabilities.pdf', 'AAGS - TOP25 Remediation with Details.pdf', 'AAGT - Top 10 Assets by Vurlnerabilities.pdf', 'AAGT - TOP25 Remediation with Details.pdf', 'AMER - Top 10 Assets by Vurlnerabilities - External.pdf', 'AMER - Top 10 Assets by Vurlnerabilities.pdf', 'AMER - TOP25 Remediation with Details.pdf', 'APAC - Top 10 Assets by Vurlnerabilities.pdf', 'APAC TOP25 Remediation with Details.pdf', 'APAC- Top 10 Assets by Vurlnerabilities - External.pdf', 'EMEA - Top 10 Assets by Vurlnerabilities - External.pdf', 'EMEA - Top 10 Assets by Vurlnerabilities.pdf', 'EMEA - TOP25 Remediation with Details.pdf', 'GSSC - Top 10 Assets by Vurlnerabilities - External.pdf', 'GSSC - Top 10 Assets by Vurlnerabilities.pdf', 'GSSC - TOP25 Remediation with Details.pdf', 'HIDG - Top 10 Assets by Vurlnerabilities - External.pdf', 'HIDG - Top 10 Assets by Vurlnerabilities.pdf', 'HIDG - TOP25 Remediation with Details.pdf']
+2021-08-18 18:33:49,983 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AAES - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'AAES'}
+2021-08-18 18:33:49,983 | discover | walk | 76 | DEBUG | Accept filename region: AAES
+2021-08-18 18:33:49,984 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AAES - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'AAES', 'root': './test2', 'path': './test2\\AAES - Top 10 Assets by Vurlnerabilities - External.pdf'}
+2021-08-18 18:33:49,985 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AAES - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'AAES'}
+2021-08-18 18:33:49,985 | discover | walk | 76 | DEBUG | Accept filename region: AAES
+2021-08-18 18:33:49,985 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AAES - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'AAES', 'root': './test2', 'path': './test2\\AAES - Top 10 Assets by Vurlnerabilities.pdf'}
+2021-08-18 18:33:49,985 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AAES - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AAES'}
+2021-08-18 18:33:49,985 | discover | walk | 76 | DEBUG | Accept filename region: AAES
+2021-08-18 18:33:49,985 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AAES - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AAES', 'root': './test2', 'path': './test2\\AAES - TOP25 Remediation with Details.pdf'}
+2021-08-18 18:33:49,985 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AAGC - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'AAGC'}
+2021-08-18 18:33:49,985 | discover | walk | 76 | DEBUG | Accept filename region: AAGC
+2021-08-18 18:33:49,985 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AAGC - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'AAGC', 'root': './test2', 'path': './test2\\AAGC - Top 10 Assets by Vurlnerabilities.pdf'}
+2021-08-18 18:33:49,986 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AAGC - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AAGC'}
+2021-08-18 18:33:49,987 | discover | walk | 76 | DEBUG | Accept filename region: AAGC
+2021-08-18 18:33:49,987 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AAGC - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AAGC', 'root': './test2', 'path': './test2\\AAGC - TOP25 Remediation with Details.pdf'}
+2021-08-18 18:33:49,987 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AAGS - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'AAGS'}
+2021-08-18 18:33:49,987 | discover | walk | 76 | DEBUG | Accept filename region: AAGS
+2021-08-18 18:33:49,987 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AAGS - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'AAGS', 'root': './test2', 'path': './test2\\AAGS - Top 10 Assets by Vurlnerabilities - External.pdf'}
+2021-08-18 18:33:49,987 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AAGS - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'AAGS'}
+2021-08-18 18:33:49,987 | discover | walk | 76 | DEBUG | Accept filename region: AAGS
+2021-08-18 18:33:49,987 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AAGS - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'AAGS', 'root': './test2', 'path': './test2\\AAGS - Top 10 Assets by Vurlnerabilities.pdf'}
+2021-08-18 18:33:49,988 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AAGS - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AAGS'}
+2021-08-18 18:33:49,988 | discover | walk | 76 | DEBUG | Accept filename region: AAGS
+2021-08-18 18:33:49,988 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AAGS - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AAGS', 'root': './test2', 'path': './test2\\AAGS - TOP25 Remediation with Details.pdf'}
+2021-08-18 18:33:49,989 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AAGT - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'AAGT'}
+2021-08-18 18:33:49,989 | discover | walk | 76 | DEBUG | Accept filename region: AAGT
+2021-08-18 18:33:49,989 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AAGT - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'AAGT', 'root': './test2', 'path': './test2\\AAGT - Top 10 Assets by Vurlnerabilities.pdf'}
+2021-08-18 18:33:49,989 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AAGT - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AAGT'}
+2021-08-18 18:33:49,989 | discover | walk | 76 | DEBUG | Accept filename region: AAGT
+2021-08-18 18:33:49,990 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AAGT - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AAGT', 'root': './test2', 'path': './test2\\AAGT - TOP25 Remediation with Details.pdf'}
+2021-08-18 18:33:49,991 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AMER - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'AMER'}
+2021-08-18 18:33:49,991 | discover | walk | 76 | DEBUG | Accept filename region: AMER
+2021-08-18 18:33:49,991 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AMER - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'AMER', 'root': './test2', 'path': './test2\\AMER - Top 10 Assets by Vurlnerabilities - External.pdf'}
+2021-08-18 18:33:49,991 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AMER - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'AMER'}
+2021-08-18 18:33:49,991 | discover | walk | 76 | DEBUG | Accept filename region: AMER
+2021-08-18 18:33:49,991 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AMER - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'AMER', 'root': './test2', 'path': './test2\\AMER - Top 10 Assets by Vurlnerabilities.pdf'}
+2021-08-18 18:33:49,991 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'AMER - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AMER'}
+2021-08-18 18:33:49,992 | discover | walk | 76 | DEBUG | Accept filename region: AMER
+2021-08-18 18:33:49,992 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'AMER - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'AMER', 'root': './test2', 'path': './test2\\AMER - TOP25 Remediation with Details.pdf'}
+2021-08-18 18:33:49,993 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'APAC - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'APAC'}
+2021-08-18 18:33:49,993 | discover | walk | 76 | DEBUG | Accept filename region: APAC
+2021-08-18 18:33:49,993 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'APAC - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'APAC', 'root': './test2', 'path': './test2\\APAC - Top 10 Assets by Vurlnerabilities.pdf'}
+2021-08-18 18:33:49,993 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'APAC TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'APAC'}
+2021-08-18 18:33:49,993 | discover | walk | 76 | DEBUG | Accept filename region: APAC
+2021-08-18 18:33:49,994 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'APAC TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'APAC', 'root': './test2', 'path': './test2\\APAC TOP25 Remediation with Details.pdf'}
+2021-08-18 18:33:49,994 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'APAC- Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'APAC'}
+2021-08-18 18:33:49,994 | discover | walk | 76 | DEBUG | Accept filename region: APAC
+2021-08-18 18:33:49,994 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'APAC- Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'APAC', 'root': './test2', 'path': './test2\\APAC- Top 10 Assets by Vurlnerabilities - External.pdf'}
+2021-08-18 18:33:49,995 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'EMEA - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'EMEA'}
+2021-08-18 18:33:49,995 | discover | walk | 76 | DEBUG | Accept filename region: EMEA
+2021-08-18 18:33:49,995 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'EMEA - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'EMEA', 'root': './test2', 'path': './test2\\EMEA - Top 10 Assets by Vurlnerabilities - External.pdf'}
+2021-08-18 18:33:49,995 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'EMEA - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'EMEA'}
+2021-08-18 18:33:49,995 | discover | walk | 76 | DEBUG | Accept filename region: EMEA
+2021-08-18 18:33:49,995 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'EMEA - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'EMEA', 'root': './test2', 'path': './test2\\EMEA - Top 10 Assets by Vurlnerabilities.pdf'}
+2021-08-18 18:33:49,996 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'EMEA - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'EMEA'}
+2021-08-18 18:33:49,996 | discover | walk | 76 | DEBUG | Accept filename region: EMEA
+2021-08-18 18:33:49,996 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'EMEA - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'EMEA', 'root': './test2', 'path': './test2\\EMEA - TOP25 Remediation with Details.pdf'}
+2021-08-18 18:33:49,996 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'GSSC - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'GSSC'}
+2021-08-18 18:33:49,996 | discover | walk | 76 | DEBUG | Accept filename region: GSSC
+2021-08-18 18:33:49,996 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'GSSC - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'GSSC', 'root': './test2', 'path': './test2\\GSSC - Top 10 Assets by Vurlnerabilities - External.pdf'}
+2021-08-18 18:33:49,997 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'GSSC - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'GSSC'}
+2021-08-18 18:33:49,997 | discover | walk | 76 | DEBUG | Accept filename region: GSSC
+2021-08-18 18:33:49,997 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'GSSC - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'GSSC', 'root': './test2', 'path': './test2\\GSSC - Top 10 Assets by Vurlnerabilities.pdf'}
+2021-08-18 18:33:49,997 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'GSSC - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'GSSC'}
+2021-08-18 18:33:49,998 | discover | walk | 76 | DEBUG | Accept filename region: GSSC
+2021-08-18 18:33:49,998 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'GSSC - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'GSSC', 'root': './test2', 'path': './test2\\GSSC - TOP25 Remediation with Details.pdf'}
+2021-08-18 18:33:49,998 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'HIDG - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'HIDG'}
+2021-08-18 18:33:49,998 | discover | walk | 76 | DEBUG | Accept filename region: HIDG
+2021-08-18 18:33:49,999 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'HIDG - Top 10 Assets by Vurlnerabilities - External.pdf', 'type': 'Top 10 Assets by Vurlnerabilities - External', 'region': 'HIDG', 'root': './test2', 'path': './test2\\HIDG - Top 10 Assets by Vurlnerabilities - External.pdf'}
+2021-08-18 18:33:49,999 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'HIDG - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'HIDG'}
+2021-08-18 18:33:49,999 | discover | walk | 76 | DEBUG | Accept filename region: HIDG
+2021-08-18 18:33:49,999 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'HIDG - Top 10 Assets by Vurlnerabilities.pdf', 'type': 'Top 10 Assets by Vurlnerabilities', 'region': 'HIDG', 'root': './test2', 'path': './test2\\HIDG - Top 10 Assets by Vurlnerabilities.pdf'}
+2021-08-18 18:33:50,000 | discover | attributes_from_filename | 35 | INFO | Parsed filename for attributes: {'filename': 'HIDG - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'HIDG'}
+2021-08-18 18:33:50,000 | discover | walk | 76 | DEBUG | Accept filename region: HIDG
+2021-08-18 18:33:50,000 | discover | walk | 87 | DEBUG | Discovered PDF: {'filename': 'HIDG - TOP25 Remediation with Details.pdf', 'type': 'TOP25 Remediation with Details', 'region': 'HIDG', 'root': './test2', 'path': './test2\\HIDG - TOP25 Remediation with Details.pdf'}
+2021-08-18 18:33:50,000 | discover | walk | 64 | DEBUG | Walking: ./test2\out, []
+2021-08-18 18:33:50,003 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,003 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AAES - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,003 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,004 | scanner | scan | 60 | DEBUG | Document path: ./test2\AAES - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,004 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,004 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AAES - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,005 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,008 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AAGC - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,006 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,006 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AAES - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,007 | scanner | scan | 60 | DEBUG | Document path: ./test2\AAES - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,007 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,006 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,008 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,008 | scanner | scan | 60 | DEBUG | Document path: ./test2\AAGC - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,009 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AAGC - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,009 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,010 | scanner | scan | 60 | DEBUG | Document path: ./test2\AAES - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,010 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,011 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,012 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,012 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AAGS - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,013 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,013 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,013 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,013 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AAGS - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,014 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,015 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,015 | scanner | scan | 60 | DEBUG | Document path: ./test2\AAGC - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,015 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,016 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AAGS - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,016 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,018 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top25
+2021-08-18 18:33:50,019 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AAGT - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,020 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,020 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,020 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,021 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AAGT - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,021 | scanner | scan | 60 | DEBUG | Document path: ./test2\AAGS - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,021 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,021 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AMER - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,022 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,022 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AMER - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,022 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,023 | scanner | scan | 60 | DEBUG | Document path: ./test2\AAGS - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,023 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,023 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\AMER - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,024 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,024 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,025 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,026 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top25
+2021-08-18 18:33:50,027 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,027 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\APAC - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,027 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,027 | scanner | scan | 60 | DEBUG | Document path: ./test2\AAGS - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,027 | scanner | __init__ | 24 | DEBUG | Scanner on
+2021-08-18 18:33:50,028 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\APAC TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,028 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (108, 252, 1677, 621)}
+2021-08-18 18:33:50,028 | scanner | scan | 60 | DEBUG | Document path: ./test2\AAGT - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,028 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\APAC- Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,029 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,029 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\EMEA - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,029 | scanner | scan | 60 | DEBUG | Document path: ./test2\AAGT - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,030 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,030 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\EMEA - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,031 | scanner | scan | 60 | DEBUG | Document path: ./test2\AMER - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,031 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,031 | scanner | scan | 60 | DEBUG | Document path: ./test2\AMER - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,031 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\EMEA - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,032 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,033 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\GSSC - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,033 | scanner | scan | 60 | DEBUG | Document path: ./test2\AMER - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,033 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\GSSC - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,033 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,033 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\GSSC - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,034 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (108, 252, 1677, 621)}
+2021-08-18 18:33:50,034 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\HIDG - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,034 | scanner | scan | 60 | DEBUG | Document path: ./test2\APAC - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,035 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\HIDG - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,036 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top25
+2021-08-18 18:33:50,036 | scanner | __init__ | 27 | DEBUG | Load document, path: ./test2\HIDG - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,036 | scanner | scan | 60 | DEBUG | Document path: ./test2\APAC TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,036 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,037 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,038 | scanner | scan | 60 | DEBUG | Document path: ./test2\APAC- Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,038 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,038 | scanner | scan | 60 | DEBUG | Document path: ./test2\EMEA - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,039 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top25
+2021-08-18 18:33:50,039 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,039 | scanner | scan | 60 | DEBUG | Document path: ./test2\EMEA - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,041 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,041 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,042 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,042 | scanner | scan | 60 | DEBUG | Document path: ./test2\EMEA - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,043 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,043 | scanner | scan | 60 | DEBUG | Document path: ./test2\GSSC - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,045 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top25
+2021-08-18 18:33:50,045 | scanner | scan | 60 | DEBUG | Document path: ./test2\GSSC - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,045 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,045 | scanner | scan | 60 | DEBUG | Document path: ./test2\GSSC - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,046 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,046 | scanner | scan | 60 | DEBUG | Document path: ./test2\HIDG - Top 10 Assets by Vurlnerabilities - External.pdf
+2021-08-18 18:33:50,047 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,047 | scanner | scan | 60 | DEBUG | Document path: ./test2\HIDG - Top 10 Assets by Vurlnerabilities.pdf
+2021-08-18 18:33:50,047 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (108, 252, 1677, 621)}
+2021-08-18 18:33:50,047 | scanner | scan | 60 | DEBUG | Document path: ./test2\HIDG - TOP25 Remediation with Details.pdf
+2021-08-18 18:33:50,049 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top25
+2021-08-18 18:33:50,049 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,049 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,050 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,050 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,051 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,052 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (108, 252, 1677, 621)}
+2021-08-18 18:33:50,052 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,053 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,053 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,054 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,054 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,055 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top25
+2021-08-18 18:33:50,056 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,056 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,057 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (108, 252, 1677, 621)}
+2021-08-18 18:33:50,058 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,058 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,060 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top25
+2021-08-18 18:33:50,060 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,061 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,061 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,062 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top10
+2021-08-18 18:33:50,062 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,064 | scanner | __init__ | 34 | DEBUG | Loading scan template: Top25
+2021-08-18 18:33:50,064 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (108, 252, 1677, 621)}
+2021-08-18 18:33:50,064 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,065 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,065 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,065 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,065 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,066 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,066 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,066 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,066 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,066 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,067 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,067 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (108, 252, 1677, 621)}
+2021-08-18 18:33:50,067 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,067 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,067 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,068 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,068 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,068 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (108, 252, 1677, 621)}
+2021-08-18 18:33:50,068 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,069 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,069 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,069 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (73, 73, 1720, 1040)}
+2021-08-18 18:33:50,069 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,070 | scanner | __init__ | 39 | INFO | Scan template: {'page': 1, 'crop': (108, 252, 1677, 621)}
+2021-08-18 18:33:50,070 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,070 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,070 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,070 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,071 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,071 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,071 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,071 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,072 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,072 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,072 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,072 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,072 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,073 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,073 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,073 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,073 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,074 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,074 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,074 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,074 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,074 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,075 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,075 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,075 | scanner | page | 78 | DEBUG | Getting page 1, pdf=None
+2021-08-18 18:33:50,076 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,076 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,077 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,077 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,077 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,077 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,078 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,078 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,078 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,079 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,079 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,079 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,080 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,080 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,080 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,081 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,081 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,081 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,081 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,082 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,082 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,083 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,083 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,083 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,083 | scanner | page | 82 | DEBUG | PDF not provided, using last scanned document
+2021-08-18 18:33:50,084 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,084 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,084 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,085 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,085 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,085 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,085 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,086 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,086 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,086 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,147 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,148 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:50,148 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,148 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,149 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,149 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,149 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,150 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,150 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,150 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,151 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,151 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,151 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,152 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,152 | scanner | page | 91 | INFO | Page 1 loaded
+2021-08-18 18:33:50,152 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,153 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,153 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,153 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,220 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:50,220 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,220 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,220 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,220 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,220 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,220 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,228 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,229 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,229 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,229 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,229 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,298 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:50,298 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,298 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,299 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,299 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,299 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,299 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,300 | scanner | pixelmap | 105 | DEBUG | Converting page to pixels, page=None, matrix=None
+2021-08-18 18:33:50,300 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,344 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:50,344 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,344 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,353 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:50,354 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,354 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,354 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,354 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,355 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,355 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,355 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,355 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,355 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,355 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,356 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,362 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,406 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:50,406 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,406 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,407 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,407 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,407 | scanner | pixelmap | 109 | DEBUG | Page not provided, using last selected page
+2021-08-18 18:33:50,407 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,415 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:50,417 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,418 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,418 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,418 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,476 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:50,479 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:50,479 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,479 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,480 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,480 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,561 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:50,561 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,565 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:50,565 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,566 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,566 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,576 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,577 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,577 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,658 | scanner | pixelmap | 114 | DEBUG | Matrix not provided, using default values
+2021-08-18 18:33:50,659 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:50,660 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,810 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:50,810 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:50,810 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,810 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:50,857 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:50,864 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:51,003 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,003 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,003 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:51,013 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:51,061 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:51,061 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,061 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:51,062 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:51,062 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:51,126 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,126 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:51,126 | scanner | matrix | 73 | DEBUG | Creating matrix: zoom_x:3, zoom_y:3, rotate:0
+2021-08-18 18:33:51,192 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:51,192 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,292 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:51,293 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,382 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,385 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:51,474 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,484 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:51,552 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,631 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,634 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:51,729 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:51,729 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,781 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,856 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:51,867 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:51,945 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:52,001 | scanner | image | 129 | DEBUG | PixMap not provided, generating from last used page
+2021-08-18 18:33:52,012 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:52,051 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:52,067 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:52,082 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:52,119 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:52,122 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:52,138 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:52,159 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:52,162 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:52,164 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:52,174 | scanner | save | 174 | INFO | Image not provided, using last working image
+2021-08-18 18:33:52,180 | scanner | save | 174 | INFO | Image not provided, using last working image

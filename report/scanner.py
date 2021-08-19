@@ -19,8 +19,9 @@ class Scanner:
     working_image = False
 
 
-    def __init__(self, path:str=None, page:int=None, crop:tuple=None, template:str=None, save=False) -> None:
-        log.debug(f"Scanner: on")
+    def __init__(self, path:str=None, page:int=None, crop:tuple=None, template:str=None, save=False, output_path:str=conf['output_image_path'],
+        output_filename=conf['output_image_filename']) -> None:
+        log.debug(f"Scanner on")
         # Preload document if given the path
         if path:
             log.debug(f"Load document, path: {path}")
@@ -52,17 +53,17 @@ class Scanner:
             return None
         # Autosave on demand:
         if save:
-            self.save()
+            self.save(path=output_path, filename=output_filename)
 
 
     def scan(self, pdf_path:str):
-        log.debug(f"SCAN: Document path: {pdf_path}")
+        log.debug(f"Document path: {pdf_path}")
         # Try to load document from path, return it or raise exception when failed
         try:
             self.working_pdf = fitz.open(pdf_path)
             return self.working_pdf
         except:
-            raise self.PDFNotFoundException(f'Scanner:scan: Could not open provided document: {pdf_path}')
+            raise self.PDFNotFoundException(f'Could not open provided document: {pdf_path}')
     
 
     @property
@@ -81,17 +82,17 @@ class Scanner:
                 log.debug(f"PDF not provided, using last scanned document")
             else:
                 log.error(f"PDF not provided, nor scanned, can not get page")
-                raise self.PDFNotfoundException("Scanner:page: Provide scan to get a page")
+                raise self.PDFNotfoundException("Provide scan to get a page")
         # Validate page number and retrive it
         try:
             # Shift to allign with array indexing (pages start from 1, index from 0)
             number = int(number) - 1
             page = pdf[number]
-            log.info(f'Scanner:page: Page {number+1} loaded')
+            log.info(f'Page {number+1} loaded')
         except ValueError:
-            raise ValueError(f'Scanner:page: {type(number)} can not be a page number: {number}')
+            raise ValueError(f'{type(number)} can not be a page number: {number}')
         except KeyError:
-            raise KeyError(f'Scanner:page: Page[{number+1}] not found, page count: {pdf.pageCount}')
+            raise KeyError(f'Page[{number+1}] not found, page count: {pdf.pageCount}')
         # Set current working page and return it
         self.working_page = page
         return self.working_page
@@ -108,7 +109,7 @@ class Scanner:
                 log.debug(f"Page not provided, using last selected page")
             else:
                 log.error(f"Page not provided, nor selected before")
-                raise self.PDFNotfoundException("Scanner:page: Provide page to get a pixelmap")
+                raise self.PDFNotfoundException("Provide page to get a pixelmap")
         if not matrix:
             log.debug(f"Matrix not provided, using default values")
             matrix = self.matrix
@@ -128,7 +129,7 @@ class Scanner:
                 log.debug(f"PixMap not provided, generating from last used page")
             else:
                 log.error(f"Page not provided, nor selected before")
-                raise self.PDFNotfoundException("Scanner:page: Provide page to get a pixelmap")
+                raise self.PDFNotfoundException("Provide page to get a pixelmap")
         try:
             img = Image.frombytes(colorspace, [pixels.width, pixels.height], pixels.samples)
         except:
@@ -151,15 +152,18 @@ class Scanner:
 
     def image_path(self, path, filename, format):
         if not os.path.exists(path):
-            os.makedirs(path)
-            log.debug(f'Scanner:image_path: Output image path does not exist, creating folder {path}')
+            try:
+                os.makedirs(path)
+                log.debug(f'Output image path does not exist, creating folder {path}')
+            except FileExistsError:
+                log.debug(f'Output image path already created by a different thread')
         if callable(filename):
             filename = filename()
         try:
             filename = str(filename)
             return f'{path}/{filename}.{format.lower()}'
         except:
-            raise ValueError('Scanner:image_path: filename is not a valid string and can not be converted to one.')
+            raise ValueError('Filename is not a valid string and can not be converted to one.')
 
 
     def save(self, image=None, path:str=conf['output_image_path'],
