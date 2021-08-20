@@ -31,7 +31,7 @@ class Index:
         Returns:
             Dict[int, Dict[str, str]]: newly added index entry.
         """
-        new_entry = {id: {'name': name, 'template': template}}
+        new_entry:Dict[int, Dict[str, str]] = {id: {'name': name, 'template': template}}
         self.ids.update(new_entry)
         return new_entry
 
@@ -99,7 +99,7 @@ class Index:
             Dict[int, Dict[str, str]]: Index entry as interpreted while adding provided values.
         """        
         if isinstance(other, dict):
-            required_attributes_check = (attribute in other for attribute in self.required_attributes)
+            required_attributes_check:Iterator[bool] = (attribute in other for attribute in self.required_attributes)
             if all(required_attributes_check) and len(other) == len(self.required_attributes):
                 return self.add(**other)
         elif isinstance(other, (list, tuple)):
@@ -128,7 +128,7 @@ class Index:
         Returns:
             Union[List[int], Iterator[int]]: An iterator or a list of ids with matching names.
         """        
-        generator = (id for name, ids in self.names.items() if re.match(regex, name) for id in ids)
+        generator:Iterator[int] = (id for name, ids in self.names.items() if re.match(regex, name) for id in ids)
         return iterator and generator or [item for item in generator]
 
     def search_multiple_names(self, *regex:str, iterator:bool=True) -> Union[List[int], Iterator[int]]:
@@ -144,26 +144,30 @@ class Index:
         """        
         return self.search_names('|'.join(f'({option})' for option in regex), iterator)
 
-class Rapid:
+class API:
 
     def __init__(self, mail:str, password:str) -> None:
         self.auth = (mail, password)
         self.index = Index()
 
-    def generate_report(self, id) -> str:
-        return requests.post(
-            RAPID_REPORT_GENERATE.substitute(id=id),
-            auth=self.auth)
+    # def generate_report(self, id) -> str:
+    #     return requests.post(
+    #         RAPID_REPORT_GENERATE.substitute(id=id),
+    #         auth=self.auth)
 
-    def download_report(self, id) -> str:
-        return requests.get(
-            RAPID_REPORT_DOWNLOAD.substitute(id=id),
-            auth=self.auth)
+    # def download_report(self, id) -> str:
+    #     return requests.get(
+    #         RAPID_REPORT_DOWNLOAD.substitute(id=id),
+    #         auth=self.auth)
 
     def resources_to_index(self, resources:dict) -> None:
+        """Adds fetched resources to index.
+
+        Args:
+            resources (dict): Fetched resources
+        """        
         for report in resources:
             # Only index needed info
-            print(report['id'], report['format'])
             if report['format'] == 'pdf':
                 self.index.add(
                         id=report['id'],
@@ -171,29 +175,39 @@ class Rapid:
                         template=report['template'])
     
     def reports_fetch_page(self, page:int, size:int=RAPID_LIST_REPORTS_SIZE) -> dict:
-        # Create API url
+        """Fetch a page of reports.
+
+        Args:
+            page (int): Page number.
+            size (int, optional): Number of reports to be downloaded. Defaults to RAPID_LIST_REPORTS_SIZE.
+
+        Returns:
+            dict: Returns parsed json response as dictionary.
+        """             
         url:str = RAPID_REPORT_LIST.substitute(size=size, page=page)
         response:requests.Response = requests.get(url, auth=self.auth)
-        print(url, response.status_code)
         return json.loads(response.text)
 
     def load_report_list_page(self, page:int, size:int=RAPID_LIST_REPORTS_SIZE) -> None:
-        print("Loading page", page)
-        data = self.reports_fetch_page(page=page, size=size)
+        """Fetches and adds reports details to index per page basis.
+
+        Args:
+            page (int): Page number.
+            size (int, optional): Number of reports to be downloaded.. Defaults to RAPID_LIST_REPORTS_SIZE.
+        """        
+        data:dict = self.reports_fetch_page(page=page, size=size)
         self.resources_to_index(data['resources'])
 
     def load_report_list(self):
+        """Prefetch number of pages of report details available via the rapid API
+        and multithread each page with API.load_report_list_page to speed up processing.
+        """        
         # Prefetch number of pages
         data:dict = self.reports_fetch_page(page=1)
         pages:int = int(data['page']['totalPages'])
 
         # Start seperate thread for each page
-        threads:List[threading.Thread] = []
         for page in range(1, pages + 1):
-            print('page', page)
             thread = threading.Thread(target=self.load_report_list_page, args=(page,))
             thread.start()
-            threads.append(thread)
-        for thread in threads:
-            thread.join()
 
