@@ -1,32 +1,31 @@
-# from . import *
-# import os, threading, time
+from prompt_toolkit.validation import Validator, ValidationError
+from PyInquirer import prompt, style_from_dict
+class Dialog:
 
-# def select_module():
-    
+    def action(self):
+        return prompt({
+            'type': 'list',
+            'name': 'action',
+            'message': 'Select action',
+            'choices': [
+                'Auto processing',
+                'Scan files',
+                'Download reports',
+                'Settings',
+                'Exit'
+            ],
+            'filter': lambda choice: {
+                'Auto processing': 'auto',
+                'Scan files': 'scan',
+                'Download reports': 'download',
+                'Settings': 'settings'
+            }.get(choice, 'exit')
+        })['action']
 
+    def __init__(self):
+        while True:
+            action = self.action()
+            if action == 'exit': return None
+            print(action)
 
-
-
-
-# def thread(pdf):
-#     print(f"Scanning {pdf['type']} in {pdf['region']}")
-#     Scanner(path=pdf['path'], save=True, template=PDF_REPORT_TYPES[pdf['type']],
-#         output_filename=f"{pdf['region']} - {pdf['type']}",
-#         output_path=f"{output}\\{(SCANNER_OUTPUT_IN_FOLDERS and pdf['region'] or '/')}")
-
-# path = input("Path to reports dictionary: ")
-# output = input("Output dictionary: ")
-# pdfs = Discover(path).pdfs
-# threads = []
-# ts = time.time()
-
-# for pdf in pdfs:
-#     threads.append(threading.Thread(
-#         target=thread,
-#         args=(pdf,)))
-#     threads[-1].start()
-
-# for t in threads:
-#     t.join()
-
-# print(f'Compleated in {time.time() - ts} seconds using {len(threads)} threads')
+Dialog()
