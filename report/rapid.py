@@ -21,29 +21,29 @@ class Index:
 
     def add_id(self, id:int, name:str, template:str) -> Dict[int, Dict[str, str]]:
         """Adds a new id to the index and associates it
-        with a name and a template name of a report
+        with a name and a template name of a report.
 
         Args:
-            id (int): rapid report identifier
-            name (str): rapid report name
-            template (str): rapid report template name
+            id (int): rapid report identifier.
+            name (str): rapid report name.
+            template (str): rapid report template name.
 
         Returns:
-            Dict[int, Dict[str, str]]: newly added index entry
+            Dict[int, Dict[str, str]]: newly added index entry.
         """
         new_entry = {id: {'name': name, 'template': template}}
         self.ids.update(new_entry)
         return new_entry
 
     def add_template(self, id:int, template:str) -> int:
-        """Adds report identifier to templates index
+        """Adds report identifier to templates index.
 
         Args:
-            id (int): rapid report identifier
-            template (str): rapid report template name
+            id (int): rapid report identifier.
+            template (str): rapid report template name.
 
         Returns:
-            int: rapid report identifier
+            int: rapid report identifier.
         """
         if template in self.templates:
             if id not in self.templates[template]:
@@ -53,14 +53,14 @@ class Index:
         return id
 
     def add_name(self, id:int, name:str) -> int:
-        """Adds report identifier to names index
+        """Adds report identifier to names index.
 
         Args:
-            id (int): rapid report identifier
-            name (str): rapid report name
+            id (int): rapid report identifier.
+            name (str): rapid report name.
 
         Returns:
-            int: rapid report identifier
+            int: rapid report identifier.
         """
         if name in self.names:
             if id not in self.names[name]:
@@ -70,21 +70,34 @@ class Index:
         return id
 
     def add(self, id:int, name:str, template:str) -> Dict[int, Dict[str, str]]:
-        """Adds report details to all indexes
+        """Adds report details to all indexes.
 
         Args:
-            id (int): rapid report identifier
-            name (str): rapid report name
-            template (str): rapid report template name
+            id (int): rapid report identifier.
+            name (str): rapid report name.
+            template (str): rapid report template name.
 
         Returns:
-            Dict[int, Dict[str, str]]: Newly added index entry
+            Dict[int, Dict[str, str]]: Newly added index entry.
         """        
         self.add_template(id=id, template=template)
         self.add_name(id=id, name=name)
         return self.add_id(id=id, name=name, template=template)
 
-    def __add__(self, other:Union[dict, list, tuple]):
+    def __add__(self, other:Union[dict, list, tuple]) -> Dict[int, Dict[str, str]]:
+        """Provides interface for + operator.
+
+        Args:
+            other (Union[dict, list, tuple]): Dicts with Index.required_attribues
+        or List|Tuple with values corresponding to Index.add arguments.
+
+        Raises:
+            self.IncompatibleAddOperation: When provided Dict|List|Tuple does not comply.
+            with index structures as stated in argument descriptions.
+
+        Returns:
+            Dict[int, Dict[str, str]]: Index entry as interpreted while adding provided values.
+        """        
         if isinstance(other, dict):
             required_attributes_check = (attribute in other for attribute in self.required_attributes)
             if all(required_attributes_check) and len(other) == len(self.required_attributes):
@@ -93,14 +106,42 @@ class Index:
             return self.add(*other)
         raise self.IncompatibleAddOperation(f"Data can not be added to Rapid Index: {other}") 
 
-    def __getitem__(self, key):
+    def __getitem__(self, key:int) -> Dict[str, str]:
+        """Shurtcut for accessing Index.ids.
+
+        Args:
+            key (int): rapid report identifier.
+
+        Returns:
+            Dict[str, str]: parameters of requested report.
+        """        
         return self.ids[key]
     
     def search_names(self, regex:str, iterator:bool=True) -> Union[List[int], Iterator[int]]:
+        """Search for names that match the given regex.
+
+        Args:
+            regex (str): regular expresion to match names with.
+            iterator (bool, optional): Returns an iterator if True, or a list if False.
+            Defaults to True.
+
+        Returns:
+            Union[List[int], Iterator[int]]: An iterator or a list of ids with matching names.
+        """        
         generator = (id for name, ids in self.names.items() if re.match(regex, name) for id in ids)
         return iterator and generator or [item for item in generator]
 
     def search_multiple_names(self, *regex:str, iterator:bool=True) -> Union[List[int], Iterator[int]]:
+        """A shortcut to create one search from multiple regular expressions.
+
+        Args:
+            *regex (str): regular expresions to match names with.
+            iterator (bool, optional): Returns an iterator if True, or a list if False.
+            Defaults to True.
+
+        Returns:
+            Union[List[int], Iterator[int]]: An iterator or a list of ids with matching names.
+        """        
         return self.search_names('|'.join(f'({option})' for option in regex), iterator)
 
 class Rapid:
