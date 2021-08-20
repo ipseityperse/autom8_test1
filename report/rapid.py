@@ -1,12 +1,7 @@
-from .settings import (
-    RAPID_REPORT_GENERATE,
-    RAPID_REPORT_DOWNLOAD,
-    RAPID_REPORT_LIST,
-    RAPID_LIST_REPORTS_SIZE,
-    log
-)
+from .config import SETTINGS, log
 from typing import Dict, List, Union, Iterator
 import requests, json, threading, re
+from string import Template
 
 
 class Index:
@@ -150,15 +145,17 @@ class API:
         self.auth = (mail, password)
         self.index = Index()
 
-    # def generate_report(self, id) -> str:
-    #     return requests.post(
-    #         RAPID_REPORT_GENERATE.substitute(id=id),
-    #         auth=self.auth)
+    def url(self, name:str, **kwargs):
+        """Create URL from template
 
-    # def download_report(self, id) -> str:
-    #     return requests.get(
-    #         RAPID_REPORT_DOWNLOAD.substitute(id=id),
-    #         auth=self.auth)
+        Args:
+            name (str): The name of the template as in settings
+            **kwargs: Key:value pairs to substitute keys in the template with the given values
+
+        Returns:
+            str: URL with arguments
+        """        
+        return Template(SETTINGS.api['endpoint'] + SETTINGS.api[name]).substitute(**kwargs)
 
     def resources_to_index(self, resources:dict) -> None:
         """Adds fetched resources to index.
@@ -174,7 +171,7 @@ class API:
                         name=report['name'],
                         template=report['template'])
     
-    def reports_fetch_page(self, page:int, size:int=RAPID_LIST_REPORTS_SIZE) -> dict:
+    def reports_fetch_page(self, page:int, size:int=SETTINGS.api['single_fetch_size']) -> dict:
         """Fetch a page of reports.
 
         Args:
@@ -184,11 +181,11 @@ class API:
         Returns:
             dict: Returns parsed json response as dictionary.
         """             
-        url:str = RAPID_REPORT_LIST.substitute(size=size, page=page)
+        url:str = self.url('list', PAGE=page, SIZE=size)
         response:requests.Response = requests.get(url, auth=self.auth)
         return json.loads(response.text)
 
-    def load_report_list_page(self, page:int, size:int=RAPID_LIST_REPORTS_SIZE) -> None:
+    def load_report_list_page(self, page:int, size:int=SETTINGS.api['single_fetch_size']) -> None:
         """Fetches and adds reports details to index per page basis.
 
         Args:

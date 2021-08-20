@@ -1,9 +1,4 @@
-from .settings import (
-    PDF_NAMING_PATTERN,
-    REGION_CODE_PATTERN,
-    PREFER_FILENAME_REGION_CODES,
-    log
-)
+from .config import CONFIG, log
 import re, os
 
 class Discover:
@@ -18,12 +13,12 @@ class Discover:
     
 
     def is_region_code(self, region:str) -> bool:
-        log.info(f'Checking for region: {REGION_CODE_PATTERN} in {region}')
-        return bool(re.match(REGION_CODE_PATTERN, region))
+        log.info(f'Checking for region: {CONFIG["region_code_pattern"]} in {region}')
+        return bool(re.match(CONFIG['region_code_pattern'], region))
 
 
     def attributes_from_filename(self, filename:str) -> dict:
-        matches = re.match(PDF_NAMING_PATTERN, filename)
+        matches = re.match(CONFIG['naming_pattern'], filename)
         try:
             attributes = {
                 'filename': filename,
@@ -41,7 +36,7 @@ class Discover:
 
     def get_region_from_path(self, path:str) -> str:
         # Only match region from last folder, allow for parent folders and closin slashes in the path
-        matches = re.match(r'.*' + REGION_CODE_PATTERN + r'[\/\\]{0,2)', path)
+        matches = re.match(r'.*' + CONFIG['region_code_pattern'] + r'[\/\\]{0,2)', path)
         try:
             region = matches.group('region')
             log.debug(f'Parsed path for region code: {region}')
@@ -72,7 +67,7 @@ class Discover:
 
                     # skip region extraction from path if region present in atributes
                     # and file region prefered over path region
-                    if 'region' in found and PREFER_FILENAME_REGION_CODES:
+                    if 'region' in found and CONFIG['separate_by_regions']:
                         log.debug(f"Accept filename region: {found['region']}")
 
                     # else try to extract region from path

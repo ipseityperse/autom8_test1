@@ -1,5 +1,4 @@
-from .settings import SCANNER_DEFAULTS as conf
-from .settings import log
+from .config import SETTINGS, CONFIG, log
 from PIL import Image
 import fitz, os
 
@@ -8,37 +7,35 @@ class Scanner:
     class PDFNotProvidedException(Exception):
         pass
 
-
     class PDFNotFoundException(Exception):
         pass
 
-    
     working_pdf = False
     working_page = False
     working_pixels = False
     working_image = False
 
+    def __init__(self, path:str=None, page:int=None, crop:tuple=None,
+        template:str=None, save=False, output_path:str=CONFIG['path'],
+        output_filename=CONFIG['filename']) -> None:
 
-    def __init__(self, path:str=None, page:int=None, crop:tuple=None, template:str=None, save=False, output_path:str=conf['output_image_path'],
-        output_filename=conf['output_image_filename']) -> None:
-        log.debug(f"Scanner on")
-        # Preload document if given the path
         if path:
-            log.debug(f"Load document, path: {path}")
+            log.info(f"Load document: {path}")
             self.scan(path)
         else:
             log.debug(f"No path provided, skipping init")
             return None
+
         # Preload scan template data
         if template:
-            log.debug(f"Loading scan template: {template}")
-            from .settings import PDF2IMG_EXPORT_PRESETS as preset
-            if template in preset:
-                page_temp = preset[template]['page']
-                crop_temp = preset[template]['crop']
-                log.info(f"Scan template: {preset[template]}")
+            log.debug(f"Template loaded: {template}")
+            if template in SETTINGS.scanner:
+                page_temp = SETTINGS.scanner[template]['page']
+                crop_temp = SETTINGS.scanner[template]['crop']
+                log.info(f"Scan template: {SETTINGS.scanner[template]}")
             else:
                 log.warning(f"Provided template does not exist: {template}")
+
         # Skip template if custom page/crop
         if not page and page_temp:
             page = page_temp
@@ -67,7 +64,7 @@ class Scanner:
     
 
     @property
-    def matrix(self, zoom_x=conf['zoom']['x'], zoom_y=conf['zoom']['y'], rotate=conf['rotate']):
+    def matrix(self, zoom_x=CONFIG['zoom']['x'], zoom_y=CONFIG['zoom']['y'], rotate=CONFIG['rotate']):
         # Can be used as property with default values or as a function with custom values
         # Returns a matrix to be filled with pixels
         log.debug(f"Creating matrix: zoom_x:{zoom_x}, zoom_y:{zoom_y}, rotate:{rotate}")
@@ -99,7 +96,7 @@ class Scanner:
 
 
     @property
-    def pixelmap(self, page=None, matrix=None, colorspace=conf['colorspace']):
+    def pixelmap(self, page=None, matrix=None, colorspace=CONFIG['colorspace']):
         # Can be used as a property given a working page being selected before
         # Or as a function where the page and custom matrix can be passed
         log.debug(f"Converting page to pixels, page={page}, matrix={matrix}")
@@ -119,7 +116,7 @@ class Scanner:
 
 
     @property
-    def image(self, pixels=None, colorspace=conf['colorspace']):
+    def image(self, pixels=None, colorspace=CONFIG['colorspace']):
         if not pixels:
             if self.working_pixels:
                 pixels = self.working_pixels
@@ -166,8 +163,8 @@ class Scanner:
             raise ValueError('Filename is not a valid string and can not be converted to one.')
 
 
-    def save(self, image=None, path:str=conf['output_image_path'],
-        filename=conf['output_image_filename'], format:str=conf['output_image_format']) -> str:
+    def save(self, image=None, path:str=CONFIG['path'],
+        filename=CONFIG['filename'], format:str=CONFIG['format']) -> str:
         if not image:
             if self.working_image:
                 image = self.working_image
