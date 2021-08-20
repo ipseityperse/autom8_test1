@@ -1,6 +1,6 @@
 from .config import SETTINGS, log
 from typing import Dict, List, Union, Iterator
-import requests, json, threading, re
+import requests, json, threading, re, time, os
 from string import Template
 
 
@@ -207,4 +207,30 @@ class API:
         for page in range(1, pages + 1):
             thread = threading.Thread(target=self.load_report_list_page, args=(page,))
             thread.start()
+
+    def generate(self, id:int) -> int:
+        url:str = self.url('generate', ID=id)
+        response:requests.Response = requests.post(url, auth=self.auth)
+        return json.loads(response.text)['id']
+
+    def url_when_generation_complete(self, id:int, instance:int) -> str:
+        url:str = self.url('instance_history', ID=id, INSTANCE=instance)
+        tries = 0
+        while True:
+            response:requests.Response = requests.get(url, auth=self.auth)
+            data:dict = json.loads(response.text)
+            print(data)
+            if data['status'] == 'running':
+                tries += 1
+                time.sleep(min(tries, SETTINGS.api['max_wait_time']))
+            elif data['status'] == 'complete':
+                return self.url('download', ID=id, INSTANCE=instance)
+    
+    def download(self, id:int, dir:str) -> None:
+        instance:int = self.generate(id)
+        url:str = self.url_when_generation_complete(id, instance)
+        response:requests.Response = requests.get(url, auth=self.auth)
+        path = os.path.join(dir, f"{self.index[id]['name']}.pdf")
+        with open(path, 'wb') as pdf:
+            pdf.write(response.content)
 
