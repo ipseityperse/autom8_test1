@@ -41,7 +41,7 @@ class Discover:
 
     def get_region_from_path(self, path:str) -> str:
         # Only match region from last folder, allow for parent folders and closin slashes in the path
-        matches = re.match(r'.*' + REGION_CODE_PATTERN + r'[\/\\]{0,2)')
+        matches = re.match(r'.*' + REGION_CODE_PATTERN + r'[\/\\]{0,2)', path)
         try:
             region = matches.group('region')
             log.debug(f'Parsed path for region code: {region}')

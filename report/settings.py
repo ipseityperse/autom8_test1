@@ -44,9 +44,35 @@ PDF_REPORT_TYPES = {
 FLAT, REGION_FOLDERS = False, True
 SCANNER_OUTPUT_IN_FOLDERS = FLAT
 
-RAPID_REPORT_API = 'https://console.rapid7.aws.assaabloy.net/api/3/reports/'
 RAPID_REPORT_INSTANCE = 'latest'
-RAPID_REPORT_GENERATE = Template(f'{RAPID_REPORT_API}$id/generate')
-RAPID_REPORT_DOWNLOAD = Template(f'{RAPID_REPORT_API}$id/history/{RAPID_REPORT_INSTANCE}/output')
+RAPID_LIST_REPORTS_SIZE = 10
+
+RAPID_REPORT_API = 'https://console.rapid7.aws.assaabloy.net/api/3/reports'
+RAPID_REPORT_GENERATE = Template(f'{RAPID_REPORT_API}/$id/generate')
+RAPID_REPORT_DOWNLOAD = Template(f'{RAPID_REPORT_API}/$id/history/{RAPID_REPORT_INSTANCE}/output')
+RAPID_REPORT_LIST = Template(f'{RAPID_REPORT_API}?size=$size&page=$page&sort=id,asc')
+
 
 THREADS = 10
+
+
+
+
+
+
+
+
+
+
+# LAST
+
+{'resources': [],
+ 'page': {'number': 164, 'size': 4, 'totalResources': 0, 'totalPages': 0},
+ 'links': [{'href': 'https://console.rapid7.aws.assaabloy.net/api/3/reports?page=0&size=4&sort=id,asc',
+   'rel': 'first'},
+  {'href': 'https://console.rapid7.aws.assaabloy.net/api/3/reports?page=163&size=4&sort=id,asc',
+   'rel': 'prev'},
+  {'href': 'https://console.rapid7.aws.assaabloy.net/api/3/reports?page=164&size=4&sort=id,asc',
+   'rel': 'self'},
+  {'href': 'https://console.rapid7.aws.assaabloy.net/api/3/reports?page=0&size=4&sort=id,asc',
+   'rel': 'last'}]}
