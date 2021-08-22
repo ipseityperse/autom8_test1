@@ -17,9 +17,6 @@ BASIC_SETTINGS = {
         "Top 10 Assets by Vurlnerabilities": 'Top10',
         "TOP25 Remediation with Details": 'Top25'
     },
-    'discovery': {
-        'prioritize_filename_regions': True
-    },
     'api': {
         'single_fetch_size': 10,
         'max_wait_time': 10,
@@ -105,7 +102,6 @@ CONFIG = {
 
 SETTINGS = Settings()
 
-
 LOG_LEVEL = {
     'NONE': log.NOTSET,
     'DEBUG': log.DEBUG,
@@ -115,9 +111,8 @@ LOG_LEVEL = {
     'CRITICAL': log.CRITICAL
 }
 
-
 log.basicConfig(
-    filename=SETTINGS.log['name'],
+    filename=os.path.join(SETTINGS.dir, SETTINGS.log['name']),
     level=LOG_LEVEL[SETTINGS.log['level']],
     format=SETTINGS.log['format'],
     encoding='utf-8'
