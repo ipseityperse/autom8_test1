@@ -9,53 +9,6 @@ class Dialog:
 
     EXIT = False
 
-    # questions = {
-    #     'settings': [
-    #         {
-    #             'type': 'list',
-    #             'name': 'auto',
-    #             'message': 'Auto processing: Select setting',
-    #             'choices': [
-    #                 'Automatically processed reports',
-    #                 'Find and add reports',
-    #                 'Exit'
-    #             ],
-    #             'filter': lambda choice: {
-    #                 'Automatically processed reports': 'list',
-    #                 'Find and add reports': 'add',
-    #             }.get(choice, self.EXIT),
-    #             'when': lambda answers: answers['scope'] == 'auto'
-    #         }
-    #     ],
-    #     'cut': [
-    #         {
-    #             'type': 'list',
-    #             'name': 'settings_api',
-    #             'message': 'API: Select setting',
-    #             'choices': [
-    #                 'Pagination',
-    #                 'Timeout',
-    #                 'Endpoint URL',
-    #                 'Listing URL',
-    #                 'Instance history URL',
-    #                 'Download URL',
-    #                 'Exit'
-    #             ],
-    #             'filter': lambda choice: {
-    #                 'Pagination': 'pagination',
-    #                 'Timeout': 'timeout',
-    #                 'Endpoint URL': 'endpoint',
-    #                 'Listing URL': 'listing',
-    #                 'Generate report URL': 'generate',
-    #                 'Instance history URL': 'instance_history',
-    #                 'Download URL': 'download'
-    #             }.get(choice, self.EXIT),
-    #             'when': lambda answers: answers['scope'] == 'settings_api'
-    #         }
-    #     ]
-    # }
-
-
     def prompt(self, questions):
         while True:
             answer = prompt(questions)
@@ -231,7 +184,6 @@ class Dialog:
             SETTINGS.pdf[name] = link
             SETTINGS.save()
             return 'settings_scan_link'
-
 
     def settings_log(self):
         questions = [
@@ -417,5 +369,6 @@ class Dialog:
             return 'settings_auto'
 
 
-
+    def auto(self):
+        return self.mapping({})
 
