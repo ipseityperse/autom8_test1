@@ -12,7 +12,6 @@ class Dialog:
     def prompt(self, questions):
         while True:
             answer = prompt(questions)
-            print(answer)
             if len(answer) == 1: 
                 for key, value in answer.items():
                     if value == self.EXIT: return None
@@ -159,14 +158,23 @@ class Dialog:
                     {'name': 'Delete', 'value': 'delete'},
                     {'name': 'Exit', 'value': self.EXIT}
                 ],
-                'when': lambda answer: answer['settings_scan_link']
+                'when': lambda answer: answer['settings_scan_link'] and answer['settings_scan_link'] != 'add'
+            },
+            {
+                'type': 'list',
+                'name': 'edit',
+                'message': 'Select link',
+                'choices': [preset for preset in SETTINGS.scanner] + [
+                    {'name': 'Exit', 'value': self.EXIT}
+                ],
+                'when': lambda answer: answer['settings_scan_link'] == 'add'
             },
             {
                 'type': 'input',
                 'name': 'add',
                 'message': 'Enter report name or regex:',
                 'default': '',
-                'when': lambda answer: answer['settings_scan_link'] == 'add'
+                'when': lambda answer: answer['settings_scan_link'] == 'add' and answer['edit']
             }]
         
         for choice in self.prompt(questions):
@@ -177,7 +185,7 @@ class Dialog:
                 if choice['edit'] == 'delete':
                     SETTINGS.pdf.pop(choice['settings_scan_link'])
                     SETTINGS.save()
-                    return 'add'
+                    return 'settings_scan_link'
                 else:
                     name = choice['settings_scan_link']
                     link = choice['edit']
