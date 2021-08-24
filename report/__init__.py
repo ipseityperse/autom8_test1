@@ -1,13 +1,16 @@
-from prompt_toolkit.validation import Validator, ValidationError
 from PyInquirer import prompt, Separator
-from . import rapid, scanner, discover
-from .config import SETTINGS, LOG_LEVEL
 
-from prompt_toolkit.validation import Validator, ValidationError
+from .config import SETTINGS, LOG_LEVEL
+from .discover import Discover
+from .scanner import Scanner
+from .rapid import API
+
+import os, threading, time
 
 class Dialog:
 
     EXIT = False
+    API = False
 
     def prompt(self, questions):
         while True:
@@ -32,7 +35,8 @@ class Dialog:
             next = self.resolve_map(choice, mapping)
             if callable(next):
                 choice = next()
-        return choice
+            else:
+                return choice
 
     def mapping(self, question, mapping={}) -> None:
         for choice in self.prompt(question):
@@ -377,6 +381,254 @@ class Dialog:
             return 'settings_auto'
 
 
+    def scan(self):
+
+        def path_validator(path):
+            path = path.strip()
+            return (
+                os.path.isfile(path) and path[-4:] in ('.pfd', '.PDF')
+                or os.path.isdir(path)
+                or path == ''
+                or 'Enter a valid path or leave empty to exit')
+
+        def cut_filter(values:str) -> tuple[str, int, tuple[int]]:
+            values = values.strip()
+            if values == 'auto': return values
+            if not len(values): return False
+
+            values:list = [int(value.strip()) for value in values.split('|')]
+            page = values.pop(0)
+            
+            if len(values) == 4: return [page, tuple(values)]
+            return [page]
+            
+        def cut_validator(values:str) -> str:
+            try:
+                cut_filter(values)
+            except:
+                return """For custom cut, use following format: page (| cut start X | start Y | end X | end Y)"""
+            else:
+                return True
+
+        for scan in self.prompt([{
+                'type': 'input',
+                'name': 'path',
+                'message': 'Enter path to a PDF file or a directory\nEmpty to exit:',
+                'validate': path_validator,
+                'filter': lambda path: path.strip() != '' and path or False
+            }, {
+                'type': 'input',
+                'name': 'cut',
+                'message': 'Scanner may try to process known reports (auto)\nYou can also provide scan parameters\nLeave empty to exit:',
+                'default': 'auto',
+                'validate': cut_validator,
+                'filter': cut_filter,
+                'when': lambda answers: answers['path']
+            }, {
+                'type': 'list',
+                'name': 'apply',
+                'message': 'Custom scan parameters:',
+                'choices': [
+                    {'name': 'Override all known presets', 'value': 'all'},
+                    {'name': 'Only apply when unknown document', 'value': 'unknown'},
+                    {'name': 'Exit','value': self.EXIT}],
+                'when': lambda answers: answers.get('cut', False) and isinstance(answers['cut'], tuple)
+            }, {
+                'type': 'input',
+                'name': 'output',
+                'message': 'Enter output directory\nEmpty to exit:',
+                'filter': lambda path: path.strip() != '' and path or False,
+                'when': lambda answers: answers.get('cut', False)
+            }]):
+
+            if scan.get('output', False):
+                page, cut = None, None
+
+                def scan_from_preset(pdf):
+                    if isinstance(pdf['preset'], (list,tuple)):
+                        [Scanner(
+                            path = pdf['path'],
+                            template=preset,
+                            save=True,
+                            output_path=scan['output'],
+                            output_filename=f"{pdf['filename'][:-4]} ({preset})")
+                            for preset in pdf]
+
+                    else: Scanner(
+                        path = pdf['path'],
+                        template=pdf['preset'],
+                        save=True,
+                        output_path=scan['output'],
+                        output_filename=pdf['filename'][:-4])
+
+                if isinstance(scan['cut'], tuple):
+                    custom_preset = {
+                        'page': scan['cut'].pop(0),
+                        'crop': scan['cut'] and scan['cut'][0] or (0,0,9999,9999)
+                    }
+
+                    def custom_scan(pdf):
+                        Scanner(
+                            path = pdf['path'],
+                            save=True,
+                            output_path=scan['output'],
+                            output_filename=pdf['filename'][:-4]
+                            **custom_preset)
+
+                    if scan['apply'] == 'all':
+                        [custom_scan(pdf) for pdf in Discover(scan['path']).pdfs]
+                    elif scan['apply'] == 'unknown':
+                        pdfs = Discover(scan['path']).pdfs
+                        for pdf in pdfs:
+                            if 'preset' in pdf:
+                                scan_from_preset(pdf)
+                            else:
+                                custom_preset(pdf)
+                    else: return self.EXIT
+
+                elif scan['cut'] == 'auto':
+                    [scan_from_preset(pdf) for pdf in Discover(scan['path']).pdfs_with_preset]
+                     
+            else: return self.EXIT
+
+    def login(self):
+        if not self.API:
+            for credentials in self.prompt([
+                {
+                    'type': 'input',
+                    'name': 'mail',
+                    'message': 'Login to Rapid7 to continue\nYour credentials will not be saved\nMail:',
+                }, {
+                    'type': 'password',
+                    'name': 'password',
+                    'message': 'Password:'}]):
+                rapid = API(credentials['mail'], credentials['password'])
+                if rapid.auth_status:
+                    self.API = rapid
+                    self.API.load_report_list(True)
+                    return True
+                else: print("Can not log you in, try again")
+
+    def download_threading(self, path, ids, scan=False):
+        threads = []
+        ids_len = len(ids)
+        wait = SETTINGS.api['max_wait_time'] / ids_len
+        wait = min(max(wait, .05), 2)
+        print(f'\nStarting {ids_len} threads ({ids_len * wait}s) in the background\n\nYou can continue to work while waiting\n\n=== DO NOT CLOSE AUTOM8 ===\n')
+        for id in ids:
+            threads.append(threading.Thread(target=self.API.download, args=(id, path)))
+            threads[-1].start()
+            time.sleep(wait)
+        [t.join() for t in threads]
+        print("=== REPORT DOWNLOAD COMPLETED ===")
+
+        if scan:
+            print("=== SCANNING ===")
+            def scan_from_preset(pdf):
+                if isinstance(pdf['preset'], (list,tuple)): [
+                    Scanner(
+                        path = pdf['path'],
+                        template=preset,
+                        save=True,
+                        output_path=path,
+                        output_filename=f"{pdf['filename'][:-4]} ({preset})")
+                        for preset in pdf]
+
+                else:
+                    Scanner(
+                        path = pdf['path'],
+                        template=pdf['preset'],
+                        save=True,
+                        output_path=path,
+                        output_filename=pdf['filename'][:-4])
+            [scan_from_preset(pdf) for pdf in Discover(path).pdfs_with_preset]
+            print("=== SCANNING COMPLETED ===")
+
+    def download_start(self, *ids, scan=False):
+        question  = {
+            'type': 'input',
+            'message': 'Enter download location\nEmpty to exit:',
+            'name': 'path'}
+        for path in self.prompt(question):
+            if not path: return self.EXIT
+            if not os.path.exists(path):
+                try: os.makedirs(path)
+                except FileExistsError: pass
+            threads =threading.Thread(target=self.download_threading, args=(path, ids, scan)).start()
+            return self.EXIT
+
+    def download(self):
+        print('Add report name/regex\n"done" to start downloading\n"list" will print added downloads\n"auto" will import autoprocessing list\nEmpty to exit')
+        downloads, question = [], {
+            'type': 'input',
+            'name': 'download',
+            'message': 'name/regex/auto/list/done:',
+            'default': ''}
+
+        for download in self.prompt(question):
+
+            if not download: return self.EXIT
+            else: download = download.strip()
+
+            if download == 'auto': downloads += SETTINGS.autoprocess
+
+            elif download in ('list', 'ls'): 
+                print('\nIndex: entry\n')
+                for i in range(len(downloads)):
+                    print(f'{i}: {downloads[i]}')
+                print('\nType "remove index(,index,index,...)" to remove it from the list')
+            
+            elif download.startswith('remove'):
+                raw = download[6:].split(',')
+                remove = []
+                for r in raw:
+                    try: remove.append(download[int(r.strip())])
+                    except IndexError: print(f'{r} is out of index')
+                    except ValueError: print(f'{r} is not a number')
+                for r in remove:
+                    try: downloads.remove(r)
+                    except: pass
+                    
+            elif download == 'done':
+                self.login()
+                print('Searching for matching reports')
+                ids = self.API.index.search_multiple_names(*downloads, iterator=False)
+                len_ids = len(ids)
+                print(f'Found {len_ids} reports out of {len(self.API.index.ids)} available')
+                if not len_ids: continue
+                for id in ids:
+                    print(f"ID:{id} name:{self.API.index.ids[id]['name']} template:{self.API.index.ids[id]['template']}")
+                self.download_start(*ids)
+                return self.EXIT
+            else: downloads.append(download)
+
+
     def auto(self):
-        return self.mapping({})
+        self.login()
+        print("This will try to process these reports:")
+        [print(report) for report in SETTINGS.autoprocess]
+        for confirm in self.prompt({
+            'type': 'confirm',
+            'message': 'Do you want to continue?',
+            'name': 'continue',
+            'default': True}):
+            if confirm:
+                print('Searching for matching reports')
+                ids = self.API.index.search_multiple_names(*SETTINGS.autoprocess, iterator=False)
+                len_ids = len(ids)
+                print(f'Found {len_ids} reports out of {len(self.API.index.ids)} available')
+                if not len_ids: return None
+                for id in ids:
+                    print(f"ID:{id} name:{self.API.index.ids[id]['name']} template:{self.API.index.ids[id]['template']}")
+                return self.download_start(*ids, scan=True)
+            return self.EXIT
+
+
+
+            
+
+
+
+
+               
 

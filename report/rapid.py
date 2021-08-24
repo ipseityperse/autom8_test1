@@ -122,11 +122,12 @@ class Index:
 
         Returns:
             Union[List[int], Iterator[int]]: An iterator or a list of ids with matching names.
-        """        
+        """
+        log.debug(f'Searching: {regex}')
         generator:Iterator[int] = (id for name, ids in self.names.items() if re.match(regex, name) for id in ids)
         return iterator and generator or [item for item in generator]
 
-    def search_multiple_names(self, *regex:str, iterator:bool=True) -> Union[List[int], Iterator[int]]:
+    def search_multiple_names(self, *regex, iterator:bool=True) -> Union[List[int], Iterator[int]]:
         """A shortcut to create one search from multiple regular expressions.
 
         Args:
@@ -144,6 +145,12 @@ class API:
     def __init__(self, mail:str, password:str) -> None:
         self.auth = (mail, password)
         self.index = Index()
+
+    @property
+    def auth_status(self):
+        url:str = self.url('list', PAGE=1, SIZE=1)
+        response:requests.Response = requests.get(url, auth=self.auth)
+        return response.status_code == 200
 
     def url(self, name:str, **kwargs):
         """Create URL from template
@@ -195,7 +202,7 @@ class API:
         data:dict = self.reports_fetch_page(page=page, size=size)
         self.resources_to_index(data['resources'])
 
-    def load_report_list(self):
+    def load_report_list(self, join=False):
         """Prefetch number of pages of report details available via the rapid API
         and multithread each page with API.load_report_list_page to speed up processing.
         """        
@@ -204,9 +211,11 @@ class API:
         pages:int = int(data['page']['totalPages'])
 
         # Start seperate thread for each page
+        threads = []
         for page in range(1, pages + 1):
-            thread = threading.Thread(target=self.load_report_list_page, args=(page,))
-            thread.start()
+            threads.append(threading.Thread(target=self.load_report_list_page, args=(page,)))
+            threads[-1].start()
+        if join: [thread.join() for thread in threads]
 
     def generate(self, id:int) -> int:
         url:str = self.url('generate', ID=id)
@@ -217,14 +226,16 @@ class API:
         url:str = self.url('instance_history', ID=id, INSTANCE=instance)
         tries = 0
         while True:
-            response:requests.Response = requests.get(url, auth=self.auth)
-            data:dict = json.loads(response.text)
-            print(data)
-            if data['status'] == 'running':
-                tries += 1
-                time.sleep(min(tries, SETTINGS.api['max_wait_time']))
-            elif data['status'] == 'complete':
-                return self.url('download', ID=id, INSTANCE=instance)
+            try: 
+                response:requests.Response = requests.get(url, auth=self.auth)
+                data:dict = json.loads(response.text)
+                if data['status'] == 'running':
+                    tries += 1
+                    time.sleep(min(tries, SETTINGS.api['max_wait_time']))
+                elif data['status'] == 'complete':
+                    return self.url('download', ID=id, INSTANCE=instance)
+            except Exception as e:
+                log.error(f'While waiting for report: {e}, data: {response.text}') 
     
     def download(self, id:int, dir:str) -> None:
         instance:int = self.generate(id)
