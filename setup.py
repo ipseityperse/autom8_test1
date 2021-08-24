@@ -1,7 +1,7 @@
 import setuptools
 setuptools.setup(
     name="autom8",
-    version="0.0.1",
+    version="0.1.0",
     author="Daniel Konopka",
     author_email="daniel@konopka.me",
     description="Package to autom8 mundane work",
