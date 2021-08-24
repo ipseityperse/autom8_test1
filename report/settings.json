@@ -15,7 +15,7 @@
                 73,
                 73,
                 1720,
-                104
+                1040
             ]
         }
     },
@@ -25,7 +25,7 @@
         "TOP25 Remediation with Details": "Top25"
     },
     "api": {
-        "single_fetch_size": 100,
+        "single_fetch_size": 10,
         "max_wait_time": 10,
         "endpoint": "https://console.rapid7.aws.assaabloy.net/api/3",
         "list": "/reports?size=$SIZE&page=$PAGE&sort=id,asc",
@@ -40,29 +40,8 @@
     },
     "autoprocess": [
         "AAES - Top 10 Assets by Vurlnerabilities - External",
-        "AAES - Top 10 Assets by Vurlnerabilities",
-        "AAES - TOP25 Remediation with Details",
-        "AAGC - Top 10 Assets by Vurlnerabilities",
         "AAGC - TOP25 Remediation with Details",
-        "AAGS - Top 10 Assets by Vurlnerabilities - External",
-        "AAGS - Top 10 Assets by Vurlnerabilities",
-        "AAGS - TOP25 Remediation with Details",
-        "AAGT - Top 10 Assets by Vurlnerabilities",
-        "AAGT - TOP25 Remediation with Details",
-        "AMER - Top 10 Assets by Vurlnerabilities - External",
         "AMER - Top 10 Assets by Vurlnerabilities",
-        "AMER - TOP25 Remediation with Details",
-        "APAC - Top 10 Assets by Vurlnerabilities",
-        "APAC TOP25 Remediation with Details",
-        "APAC- Top 10 Assets by Vurlnerabilities - External",
-        "EMEA - Top 10 Assets by Vurlnerabilities - External",
-        "EMEA - Top 10 Assets by Vurlnerabilities",
-        "EMEA - TOP25 Remediation with Details",
-        "GSSC - Top 10 Assets by Vurlnerabilities - External",
-        "GSSC - Top 10 Assets by Vurlnerabilities",
-        "GSSC - TOP25 Remediation with Details",
-        "HIDG - Top 10 Assets by Vurlnerabilities - External",
-        "HIDG - Top 10 Assets by Vurlnerabilities",
-        "HIDG - TOP25 Remediation with Details"
+        "EMEA - Top 10 Assets by Vurlnerabilities"
     ]
 }
