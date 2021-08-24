@@ -56,9 +56,7 @@ BASIC_SETTINGS = {
         'GSSC - TOP25 Remediation with Details',
         'HIDG - Top 10 Assets by Vurlnerabilities - External',
         'HIDG - Top 10 Assets by Vurlnerabilities',
-        'HIDG - TOP25 Remediation with Details'
-    ]
-}
+        'HIDG - TOP25 Remediation with Details']}
 class Settings:
     def __init__(self, path:str=None):
         self.dir = path or os.path.dirname(__file__)
